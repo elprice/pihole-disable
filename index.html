@@ -10,7 +10,7 @@
 </style>
 <script>
     async function disable(duration) {
-        let response = await fetch(`http://127.0.0.1:5000/disable?duration=${duration}`);
+        let response = await fetch(`http://192.168.0.101:5000/disable?duration=${duration}`);
         let data = await response.json();
         document.getElementById("message").innerHTML = data;
     }
