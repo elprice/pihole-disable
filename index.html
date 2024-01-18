@@ -1,0 +1,27 @@
+<!-- HTML !-->
+
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<title>Pihole Disabler</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="styles/styles.css">
+<style>
+</style>
+<script>
+    async function disable(duration) {
+        let response = await fetch(`http://127.0.0.1:5000/disable?duration=${duration}`);
+        let data = await response.json();
+        document.getElementById("message").innerHTML = data;
+    }
+</script>
+
+<body>
+    <p class="main-header">Disable Pihole for:</p>
+    <button class="button-9" role="button" onclick="disable(5)">5 min</button>
+    <button class="button-9" role="button" onclick="disable(30)">30 min</button>
+    <div id="message"></div>
+    <div class="footer">&copy; i love penny &#128021;</div>
+</body>
+
+</html>
