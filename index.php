@@ -64,14 +64,14 @@
         <div class="msg">
             <?php
             session_start();
-            if (!empty($_POST) && $_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['disable-duration'])) {
+            if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['disable-duration'])) {
                 $duration = $_POST['disable-duration'];
                 if (!is_numeric($duration)) {
                     exit;
                 }
                 exec("sudo pihole disable " . $duration . "m");
                 $_SESSION['message'] = $duration;
-                header('Location:index.php');
+                header("Location: " . $_SERVER['PHP_SELF']);
                 exit;
             }
             if (isset($_SESSION['message'])) {
