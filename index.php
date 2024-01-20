@@ -5,7 +5,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['duration_minutes'])) 
         exit;
     }
     exec("sudo pihole disable " . $duration_minutes . "m");
-    return "pihole disabled for " . $duration_minutes . " minutes";
+    echo "pihole disabled for " . $duration_minutes . " minutes";
     exit;
 }
 ?>
