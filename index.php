@@ -1,3 +1,16 @@
+GNU nano 7.2                            index.php                                     
+<?php 
+
+if($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET["duration"]))
+{
+if (isset($_GET["duration"])){
+//$response = array("message"=>"somemessage");
+echo json_encode("message");
+}
+}
+else {
+?>
+
 <!-- HTML !-->
 
 <!DOCTYPE html>
@@ -10,8 +23,8 @@
 </style>
 <script>
     async function disable(duration) {
-        let response = await fetch(`http://192.168.0.101:5000/disable?duration=${duration}`);
-        let data = await response.json();
+        let response = await fetch(`http://192.168.0.101/index.php?duration=${duration}>
+        let data = await response.text();
         document.getElementById("message").innerHTML = data;
     }
 </script>
@@ -25,3 +38,4 @@
 </body>
 
 </html>
+<?php } ?>
