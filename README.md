@@ -12,7 +12,8 @@ On the pihole host:
 cd /var/www/html
 git clone https://github.com/elprice/pihole-disable.git disable
 
-# need to disable piholes redirect of all non-/admin/ URLs to /admin/ by renaming it. Don't worry - it's behavior is provided in the included in the pihole-disable config.
+# disable piholes default redirect rule of all non-/admin/ URLs to /admin/ by renaming it. 
+#  Don't worry - this behavior is retained in the included in the pihole-disable config.
 cd /etc/lighttpd/conf-enabled
 mv 16-pihole-admin-redirect.conf 16-pihole-admin-redirect.conf.old
 
