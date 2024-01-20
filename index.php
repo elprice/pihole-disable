@@ -1,16 +1,4 @@
 GNU nano 7.2                            index.php                                     
-<?php 
-
-if($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET["duration"]))
-{
-if (isset($_GET["duration"])){
-//$response = array("message"=>"somemessage");
-echo json_encode("message");
-}
-}
-else {
-?>
-
 <!-- HTML !-->
 
 <!DOCTYPE html>
@@ -31,11 +19,30 @@ else {
 
 <body>
     <p class="main-header">Disable Pihole for:</p>
-    <button class="button-9" role="button" onclick="disable(5)">5 min</button>
-    <button class="button-9" role="button" onclick="disable(30)">30 min</button>
-    <div id="message"></div>
-    <div class="footer">&copy; i love penny &#128021;</div>
-</body>
+    
+<form method="post">
+<button type="submit"  class="button-9" role="button" name="disable-duration" value="5">
+    <button type="submit" class="button-9" role="button" name="disable-duration" value=>
+       <div id="message">
+ <?php 
+session_start();
+if(!empty($_POST) && $_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['disable-dur>
+        $data = $_POST['disable-duration'];
+//      unset($_POST['disable-duration']);
+        //header('Location:index.php');
+        $_SESSION['message'] = $data;
+        header('Location:index.php');
+        exit;
+}
+if(isset($_SESSION['message'])){
+echo $_SESSION['message'];
+unset($_SESSION['message']);
+}
 
+?>
+</div>
+
+    <div class="footer">&copy; i love penny &#128021;</div>
+</form>
+</body>
 </html>
-<?php } ?>
