@@ -9,6 +9,7 @@ The simple solution to temporarily disable pihole from your network!
 
 On the pihole host:
 ```sh
+# clone the project (requires git)
 cd /var/www/html
 git clone https://github.com/elprice/pihole-disable.git disable
 
