@@ -27,7 +27,7 @@
         font-size: 100%;
         height: 44px;
         line-height: 1.15;
-        margin: 12px 12px 0 0;
+        margin: 12px 0 0 0;
         outline: none;
         overflow: hidden;
         padding: 0 25px;
