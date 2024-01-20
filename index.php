@@ -1,10 +1,21 @@
+<?php
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['duration_minutes'])) {
+    $duration_minutes = $_POST['duration_minutes'];
+    if (!is_numeric($duration_minutes)) {
+        exit;
+    }
+    exec("sudo pihole disable " . $duration_minutes . "m");
+    return "pihole disabled for " . $duration_minutes . " minutes";
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <meta charset="UTF-8">
 <title>Pihole Disabler</title>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <style>
-    .header {
+    #header {
         font-family: -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Ubuntu, sans-serif;
         font-size: larger;
         font-weight: bold;
@@ -47,7 +58,7 @@
         box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset, rgba(50, 50, 93, .2) 0 6px 15px 0, rgba(0, 0, 0, .1) 0 2px 2px 0, rgba(50, 151, 211, .3) 0 0 0 4px;
     }
 
-    .msg {
+    #msg {
         color: red;
         font-family: -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Ubuntu, sans-serif;
         font-size: larger;
@@ -57,30 +68,25 @@
 </style>
 
 <body>
-    <p class="header">Disable Pihole for:</p>
-    <form method="post">
-        <button type="submit" class="btn" role="button" name="disable-duration" value="5">5 min</button>
-        <button type="submit" class="btn" role="button" name="disable-duration" value="30">30 min</button>
-        <div class="msg">
-            <?php
-            session_start();
-            if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['disable-duration'])) {
-                $duration = $_POST['disable-duration'];
-                if (!is_numeric($duration)) {
-                    exit;
-                }
-                exec("sudo pihole disable " . $duration . "m");
-                $_SESSION['message'] = $duration;
-                header("Location: " . $_SERVER['PHP_SELF']);
-                exit;
-            }
-            if (isset($_SESSION['message'])) {
-                echo "pihole disabled for " . $_SESSION['message'] . " minutes";
-                unset($_SESSION['message']);
-            }
-            ?>
-        </div>
-    </form>
+    <p id="header">Disable Pihole for:</p>
+    <button class="btn" role="button" onclick="disable(5)">5 min</button>
+    <button class="btn" role="button" onclick="disable(30)">30 min</button>
+    <div id="msg" />
 </body>
+
+<script>
+    async function disable(durationMinutes) {
+        let response = await fetch(window.current.href, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: `duration_minutes=${durationMinutes}`,
+            cache: 'no-store'
+        });
+        let data = await response.text();
+        document.getElementById("msg").innerHTML = data;
+    }
+</script>
 
 </html>
