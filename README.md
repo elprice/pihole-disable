@@ -5,7 +5,7 @@ The simple solution to temporarily disable pihole from your network!
 (Perfect for family members that complain about links not working for time to time!) 
 
 ## Installation
-> **Note**: the author installed this on Debian. Other distros should work!
+> **Note**: the author installed this on Debian.
 
 On the pihole host:
 ```sh
@@ -25,5 +25,7 @@ systemctl reload lighttpd
 
 ## Usage
 pihile-disable should be available @ http://\<your-pihole-url\>/disable
+
+Click the buttons to disable pihole!
 
 > **Note**: if a different path than /disable/ is desired just clone the project to a different directory name under /var/www/html and update the 17-pihole-disable.conf regex to the new directory path
