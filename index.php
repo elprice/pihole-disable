@@ -76,7 +76,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['duration_minutes'])) 
 
 <script>
     async function disable(durationMinutes) {
-        let response = await fetch(window.current.href, {
+        let response = await fetch(window.location.href, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
