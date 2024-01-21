@@ -8,7 +8,7 @@ The simple solution to temporarily disable pihole from your network!
 > [!NOTE]  
 > The author installed this on Debian 12. Requires [pihole-web](https://github.com/pi-hole/web) > *which is installed by default with pihole* to work. 
 
-on the pihole host:
+#### On the pihole host:
 ```sh
 # clone the project (requires git)
 cd /var/www/html
@@ -27,9 +27,9 @@ systemctl reload lighttpd
 ```
 
 ## Usage
-pihile-disable should be available @ http://\<your-pihole-url\>/disable/
+`pihole-disable` should be available now at `http://\<your-pihole-url\>/disable/`
 
-Click the buttons to disable pihole temporarily!
+Click either button to disable pihole temporarily!
 
-> [!TIP] 
-> If a different path than http://\<your-pihole-url\>/disable/ is desired just clone the project to a different directory name under /var/www/html and update the 17-pihole-disable.conf 'disable' references to the new directory name
+> [!TIP]   
+> If a different path than http://\<your-pihole-url\>/disable/ is desired then change the directory name under /var/www/html/disable to /var/www/html/\<your-desired-path\> and replace mentions of "disable" in 17-pihole-disable.conf to \<your-desired-path\> then restart lighttpd same as above.
