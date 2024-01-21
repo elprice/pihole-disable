@@ -6,7 +6,7 @@ The simple solution to temporarily disable pihole from your network!
 
 ## Installation
 > [!NOTE]  
-> The author installed this on Debian 12. Requires [pihole-web](https://github.com/pi-hole/web) > *which is installed by default with pihole* to work. 
+> The author installed this on Debian 12. Requires [pihole-web](https://github.com/pi-hole/web) *which is installed by default with pihole* to work. 
 
 #### On the pihole host:
 ```sh
